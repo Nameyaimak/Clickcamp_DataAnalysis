@@ -105,7 +105,7 @@ if uploaded is not None:
             # =============================
             #   Download Predictions + Show Table
             # =============================
-            st.subheader("📥 ผลการทำนายทั้งหมด")
+            st.subheader("📥 ตัวอย่างผลการทำนาย")
 
             pred_df = pd.DataFrame({
                 "Actual": y_test,
@@ -114,7 +114,7 @@ if uploaded is not None:
 
             pred_df["Error (Pred - Actual)"] = pred_df["Predicted"] - pred_df["Actual"]
 
-            st.dataframe(pred_df, use_container_width=True)
+            st.dataframe(pred_df.head(), use_container_width=True)
 
             csv_out = pred_df.to_csv(index=False).encode("utf-8")
             st.download_button(
